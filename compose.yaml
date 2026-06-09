@@ -1,8 +1,10 @@
-context: .
+services:
+  laravel-service:
+    container_name: laravel-container
+    build:
+      context: .
       dockerfile: docker/laravel/Dockerfile
     working_dir: /var/www/html
-    ports:
-      - "8000:8000"
     volumes:
       - ./laravel-app:/var/www/html
       - ./docker/laravel/entrypoint.development.sh:/usr/local/bin/entrypoint.development.sh
@@ -37,9 +39,8 @@ context: .
       MYSQL_ROOT_PASSWORD: root
       TZ: UTC
     volumes:
-      - ./vuejs-app:/app
       - mysql_data:/var/lib/mysql
-      
+
   phpmyadmin:
     image: phpmyadmin:5.2.2
     container_name: phpmyadmin-container
