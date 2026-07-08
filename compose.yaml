@@ -14,7 +14,7 @@ services:
     depends_on:
       - mysql-service
     command: ["bash", "/usr/local/bin/entrypoint.development.sh"]
-
+ 
   vuejs-service:
     container_name: vuejs-container
     build:
